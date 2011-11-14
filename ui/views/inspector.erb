@@ -1,0 +1,29 @@
+<form action="/inspector" method="post">
+  <label for="expression">Enter the expression to evaluate:</label>
+  <input type="string" name="expression"></input>
+  <input type="submit" name="submit" value="Evaluate and inspect"></input>
+</form>
+
+<% if exception %>
+  <p>A error has occured while evaluating the expression:</p>
+  <p><%= exception.to_s %></p>
+<% else %>
+  <div id="inspector_results">
+    <p>Object: <%= object.to_s %> instance of <%= object.class.to_s %></p>
+    <div id="inspector_instance_variables">
+      <p>Instance variables: </p>
+      <ul>
+      <% object.instance_variables.each do |ivar| %>
+        <li>
+          <form action="/inspector" method="post">
+            <input type="hidden" name="expression" value="<%= '(' + expression + ').instance_variable_get(:' + ivar.to_s + ')' %>"></input>
+            <input type="submit" name="submit" value="<%= ivar.to_s %>"></input>
+          </form>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+

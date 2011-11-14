@@ -1,0 +1,11 @@
+#classes_panel, #instance_methods_panel, #class_methods_panel {
+  float:left;
+}
+
+#classes_list, #instance_methods_list, #class_methods_list {
+  width: 300px;
+}
+
+#code_panel {
+  clear:both;
+}

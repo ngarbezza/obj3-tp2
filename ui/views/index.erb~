@@ -1,0 +1,7 @@
+<p>All system classes</p>
+
+<select id="classes_list" style="height:420px;width: 250px;">
+<% classes.each do |c| %>
+  <option value="<%= c.name %>"><%= c.name %></option>
+<% end %>
+</select>

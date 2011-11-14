@@ -1,0 +1,16 @@
+<h2>Actions</h2>
+
+<ul>
+  <li><a href="/changes/new_class">New class</a></li>
+  <li><a href="/changes/new_method">New method</a></li>
+  <li><a href="/changes/new_module">New module</a></li>
+  <li><a href="/changes/include_module">Include a module</a></li>
+</ul>
+
+<h2>All changes</h2>
+
+<ul>
+<% changes.each do |change| %>
+  <li><%= change.to_s %></li>
+<% end %>
+</ul>

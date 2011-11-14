@@ -1,0 +1,72 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    prettyPrint();
+
+    $("#classes_list").change(function(){
+      $("body").load("/browser?class=" + $(this).val());
+    });
+
+    $("#instance_methods_list").change(function(){
+      $("body").load("/browser?class="
+        + $("#classes_list option:selected").val()
+        + "&method_name=" + $(this).val()
+        + "&method_kind=instance");
+    });
+
+    $("#class_methods_list").change(function(){
+      $("body").load("/browser?class="
+        + $("#classes_list option:selected").val()
+        + "&method_name=" + $(this).val()
+        + "&method_kind=class");
+    });
+  });
+</script>
+
+<div id="classes_and_methods_nav">
+
+  <div id="classes_panel">
+    <p>Classes</p>
+    <select id="classes_list" size="20">
+      <% classes.each do |c| %>
+        <% if c == class_selected %>
+          <option value="<%= c.name %>" selected="selected"><%= c.name %></option>
+        <% else %>
+          <option value="<%= c.name %>"><%= c.name %></option>
+        <% end %>
+      <% end %>
+    </select>
+  </div>
+
+  <div id="instance_methods_panel">
+    <% unless instance_methods.empty? %>
+      <p>All instance methods</p>
+      <select id="instance_methods_list" size="20">
+        <% instance_methods.each do |m| %>
+          <option value="<%= m %>"><%= m %></option>
+        <% end %>
+      </select>
+    <% end %>
+  </div>
+
+  <div id="class_methods_panel">
+    <% unless class_methods.empty? %>
+      <p>All class methods</p>
+      <select id="class_methods_list" size="20">
+        <% class_methods.each do |m| %>
+          <option value="<%= m %>"><%= m %></option>
+        <% end %>
+      </select>
+    <% end %>    
+  </div>
+
+</div>
+
+<div id="code_panel">
+  <p>Code</p>
+  <pre class="prettyprint">
+<%= method_code ? method_code : "Code not available" %>
+  </pre>
+</div>
+
+
+

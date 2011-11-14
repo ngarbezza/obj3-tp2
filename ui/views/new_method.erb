@@ -1,0 +1,14 @@
+<h2>New Method</h2>
+
+<form action="/changes/new_method" method="post">
+  <label for="target">Target: </label>
+  <input type="text" name="target"><br />
+  <label for="kind">Instance or class method? </label>
+  <input type="radio" name="kind" value="instance">instance</input>
+  <input type="radio" name="kind" value="class">class</input><br />
+  <label for="name">Method name: </label>
+  <input type="text" name="name"><br />
+  <label for="code">Code: </label>
+  <textarea name="code" rows="10" cols="60"></textarea><br />
+  <input type="submit" value="Create method" name="submit">
+</form>
